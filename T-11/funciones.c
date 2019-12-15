@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define tam 3
 #define n_mtr 2
 
@@ -8,6 +9,7 @@ int n_m, apartado, fila;
 int i, j, matriz[n_mtr][tam][tam], maxfila[n_mtr], mds[n_mtr], p, matrizP[n_mtr][tam][tam];
 
 int leer_matriz (void) {
+  system("cls");
   for (n_m=0; n_m<n_mtr; n_m++) {
     if (n_m==0) {
       printf("\nMatriz A\n");
@@ -24,6 +26,7 @@ int leer_matriz (void) {
 }
 
 int traspuesta_matriz (void) {
+  system("cls");
   for (n_m=0; n_m<n_mtr; n_m++) {
     if (n_m==0) {
       printf("\nTraspuesta de Matriz A\n");
@@ -40,13 +43,17 @@ int traspuesta_matriz (void) {
 }
 
 int max_fila (void) {
-  printf("\n\n¿Fila 1, 2 o 3? ");
+  system("cls");
+  printf("\nFila 1, 2 o 3? ");
   do {
     scanf("%d", &fila);
     if (fila<0 || fila>3){
+      system("cls");
+      printf("\nFila 1, 2 o 3? ");
       printf("\nOpcion introducida no existe, introduzca de nuevo el numero de la fila:    ");
     }
   } while (fila!=1 && fila!=2 && fila!=3);
+  system("cls");
   for (n_m=0; n_m<n_mtr; n_m++) {
     maxfila[n_m]=0;
     for (i=(fila-1); i<=(fila-1); i++) {
@@ -65,6 +72,7 @@ int max_fila (void) {
 }
 
 int media_diag_sec (void) {
+  system("cls");
   for (n_m=0; n_m<n_mtr; n_m++) {
     for (i=0; i<tam; i++) {
       for (j=0; j<tam; j++) {
@@ -82,6 +90,7 @@ int media_diag_sec (void) {
 }
 
 int producto (void) {
+  system("cls");
   for (n_m=0; n_m<n_mtr; n_m++) {
     if (n_m==0) {
       printf("\nAxB\n");
@@ -116,19 +125,21 @@ int vuelve_menu (void) {
       printf("\n");
       menu();
     } else {
-      printf("Opcion introducida no existe, pulse 0 para ir al menu   ");
+      system("cls");
+      printf("\n\nPara volver al menu pulse 0   ");
     }
   } while (apartado!=0);
 }
 
 void menu (void) {
-  printf("1) Mostrar en pantalla las matrices A y B");
+  system("cls");
+  printf("\n1) Mostrar en pantalla las matrices A y B");
   printf("\n2) Mostrar la matriz traspuesta de A y de B");
   printf("\n3) Maximo en una fila de A y maximo en la misma fila para B");
   printf("\n4) Medias aritmeticas de los elementos de la diagonal secundaria de A y de B");
   printf("\n5) Mostrar los productos de AxB y BxA");
   printf("\n6) Salir del programa");
-  printf ("\nElija un apartado: ");
+  printf ("\n\nElija un apartado: ");
   scanf("%d", &apartado);
   if (apartado==1) {
     leer_matriz();
@@ -151,10 +162,10 @@ void menu (void) {
     printf("\n\nPara volver al menu pulse 0   ");
     vuelve_menu();
   } else if (apartado==6) {
-    printf("\n\nPara acceder al programa pulse 0   ");
+    system("cls");
+    printf("\nPara acceder al programa pulse 0   ");
     vuelve_menu();
   } else {
-    printf("\n\nEl numero que esta introduciendo no corresponde a ningun apartado\n\n");
     menu();
   }
 }
